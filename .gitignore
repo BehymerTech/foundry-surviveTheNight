@@ -1,0 +1,5 @@
+node_modules/
+packs/
+system.zip
+.DS_Store
+Thumbs.db

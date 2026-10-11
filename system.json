@@ -1,0 +1,102 @@
+{
+  "id": "survive-the-night",
+  "title": "Survive the Night",
+  "description": "A horror role-playing game system for Foundry VTT: step-by-step survivor creation, difficulty rolls, Fear and Panic!, and monsters.",
+  "version": "0.1.0",
+  "compatibility": {
+    "minimum": "14",
+    "verified": "14.369"
+  },
+  "authors": [
+    {
+      "name": "BehymerTech"
+    }
+  ],
+  "esmodules": [
+    "scripts/main.mjs"
+  ],
+  "styles": [
+    "styles/stn.css"
+  ],
+  "languages": [
+    {
+      "lang": "en",
+      "name": "English",
+      "path": "lang/en.json"
+    }
+  ],
+  "documentTypes": {
+    "Actor": {
+      "character": {
+        "htmlFields": [
+          "biography"
+        ]
+      },
+      "npc": {
+        "htmlFields": [
+          "abilities",
+          "biography"
+        ]
+      }
+    },
+    "Item": {
+      "skill": {
+        "htmlFields": [
+          "description"
+        ]
+      },
+      "trait": {
+        "htmlFields": [
+          "description"
+        ]
+      },
+      "gear": {
+        "htmlFields": [
+          "description"
+        ]
+      }
+    }
+  },
+  "packs": [
+    {
+      "name": "skills",
+      "label": "Skills",
+      "path": "packs/skills",
+      "type": "Item",
+      "system": "survive-the-night"
+    },
+    {
+      "name": "traits",
+      "label": "Traits and Class Abilities",
+      "path": "packs/traits",
+      "type": "Item",
+      "system": "survive-the-night"
+    },
+    {
+      "name": "gear",
+      "label": "Gear",
+      "path": "packs/gear",
+      "type": "Item",
+      "system": "survive-the-night"
+    },
+    {
+      "name": "survivors",
+      "label": "Sample Survivors",
+      "path": "packs/survivors",
+      "type": "Actor",
+      "system": "survive-the-night"
+    }
+  ],
+  "packFolders": [],
+  "grid": {
+    "distance": 5,
+    "units": "ft",
+    "type": 1
+  },
+  "primaryTokenAttribute": "life",
+  "secondaryTokenAttribute": "fatigue",
+  "url": "https://github.com/BehymerTech/foundry-surviveTheNight",
+  "bugs": "https://github.com/BehymerTech/foundry-surviveTheNight/issues",
+  "manifest": "https://github.com/BehymerTech/foundry-surviveTheNight/releases/latest/download/system.json",
+  "download": "https://github.com/BehymerTech/foundry-surviveTheNight/releases/latest/download/system.zip"
+}

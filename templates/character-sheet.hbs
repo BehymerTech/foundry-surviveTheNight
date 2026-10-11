@@ -1,0 +1,133 @@
+<div class="stn-sheet-body">
+    <header class="stn-head">
+        <img class="portrait" src="{{actor.img}}" data-edit="img" data-action="editImage" alt="{{actor.name}}">
+        <div class="identity">
+            <input class="name" type="text" name="name" value="{{actor.name}}" placeholder="{{localize 'STN.Sheet.name'}}" {{#unless editable}}disabled{{/unless}}>
+            <div class="sub">
+                <span class="class">{{#if className}}{{className}}{{else}}{{localize "STN.Sheet.noClass"}}{{/if}}</span>
+                <input type="text" name="system.appearance" value="{{system.appearance}}" placeholder="{{localize 'STN.Sheet.appearance'}}" {{#unless editable}}disabled{{/unless}}>
+            </div>
+            {{#if hasPendingCreate}}
+            <button type="button" class="primary" data-action="creator"><i class="fa-solid fa-ghost"></i> {{localize "STN.Creator.title"}}</button>
+            {{/if}}
+        </div>
+        <div class="vitals">
+            <div class="vital life {{#if system.winded}}low{{/if}}">
+                <span class="label">{{localize "STN.Life"}}</span>
+                <div class="bar"><i style="width: {{system.life.pct}}%"></i></div>
+                <div class="numbers">
+                    <button type="button" data-action="life" data-delta="-1">−</button>
+                    <input type="number" name="system.life.value" value="{{system.life.value}}" {{#unless editable}}disabled{{/unless}}>
+                    <span>/ {{system.life.max}}</span>
+                    <button type="button" data-action="life" data-delta="1">+</button>
+                </div>
+            </div>
+            <div class="vital dv"><span class="label">{{localize "STN.DodgeValue"}}</span><strong>{{derived.dv}}</strong></div>
+            <div class="vital fatigue {{#if system.fatiguePenalty}}active{{/if}}">
+                <span class="label">{{localize "STN.Fatigue"}}</span>
+                <div class="numbers">
+                    <button type="button" data-action="fatigue" data-delta="-1">−</button>
+                    <strong>{{system.fatigue}}</strong>
+                    <button type="button" data-action="fatigue" data-delta="1">+</button>
+                </div>
+                <small>{{localize "STN.FatiguePenalty"}}: {{fatigueText}}</small>
+            </div>
+        </div>
+    </header>
+
+    <section class="stn-stats">
+        {{#each stats}}
+        <div class="stat">
+            <label>{{label}}</label>
+            <input type="number" name="system.stats.{{key}}" value="{{value}}" {{#unless ../editable}}disabled{{/unless}}>
+            <small>{{hint}}</small>
+        </div>
+        {{/each}}
+        <div class="stat derived"><label>{{localize "STN.MeleeDamage"}}</label><strong>{{derived.meleeText}}</strong></div>
+        <div class="stat derived"><label>{{localize "STN.RangedDamage"}}</label><strong>{{derived.rangedText}}</strong></div>
+        <div class="stat derived"><label>{{localize "STN.Grapple"}}</label><strong>{{derived.grappleText}}</strong></div>
+    </section>
+
+    <section class="stn-rolls">
+        <h3>{{localize "STN.Sheet.rolls"}}</h3>
+        <div class="buttons">
+            <button type="button" data-action="check" data-check="perception"><i class="fa-solid fa-eye"></i> {{localize "STN.Check.perception"}}</button>
+            <button type="button" data-action="check" data-check="observation"><i class="fa-solid fa-magnifying-glass"></i> {{localize "STN.Check.observation"}}</button>
+            <button type="button" data-action="check" data-check="intelligence"><i class="fa-solid fa-lightbulb"></i> {{localize "STN.Check.intelligence"}}</button>
+            <button type="button" data-action="check" data-check="strength"><i class="fa-solid fa-dumbbell"></i> {{localize "STN.Check.strength"}}</button>
+            <button type="button" data-action="check" data-check="reflex"><i class="fa-solid fa-bolt"></i> {{localize "STN.Check.reflex"}}</button>
+            <button type="button" class="fear" data-action="check" data-check="fear"><i class="fa-solid fa-ghost"></i> {{localize "STN.Check.fear"}}</button>
+            <button type="button" class="fear" data-action="panic"><i class="fa-solid fa-skull"></i> {{localize "STN.Check.panic"}}</button>
+            {{#if hasLucky}}<button type="button" data-action="lucky"><i class="fa-solid fa-clover"></i> {{localize "STN.Lucky.title"}} ({{system.luckyBreaks.value}}/{{system.luckyBreaks.max}})</button>{{/if}}
+        </div>
+        {{#if isWingman}}
+        <label class="checkbox"><input type="checkbox" name="system.friendNearby" {{checked system.friendNearby}}> {{localize "STN.Sheet.friendNearby"}}</label>
+        {{/if}}
+        <p class="hint">{{localize "STN.Sheet.rollHint"}}</p>
+    </section>
+
+    <div class="stn-columns">
+        <section class="stn-skills">
+            <h3>{{localize "STN.Skills"}} <button type="button" class="icon" data-action="newItem" data-type="skill" title="{{localize 'STN.Sheet.add'}}"><i class="fa-solid fa-plus"></i></button></h3>
+            <ul>
+                {{#each skills}}
+                <li data-item-id="{{id}}">
+                    <button type="button" class="roll" data-action="skill"><i class="fa-solid fa-dice-d6"></i> {{name}}</button>
+                    <span class="bonus {{#if system.mastered}}mastered{{/if}}">{{bonus}}</span>
+                    <span class="actions">
+                        <button type="button" class="icon" data-action="toggleMastery" title="{{localize 'STN.Sheet.mastery'}}"><i class="fa-{{#if system.mastered}}solid{{else}}regular{{/if}} fa-star"></i></button>
+                        <button type="button" class="icon" data-action="editItem"><i class="fa-solid fa-pen-to-square"></i></button>
+                        <button type="button" class="icon" data-action="deleteItem"><i class="fa-solid fa-trash"></i></button>
+                    </span>
+                </li>
+                {{else}}<li class="empty">{{localize "STN.Sheet.none"}}</li>{{/each}}
+            </ul>
+        </section>
+
+        <section class="stn-traits">
+            <h3>{{localize "STN.Traits"}} <button type="button" class="icon" data-action="newItem" data-type="trait" title="{{localize 'STN.Sheet.add'}}"><i class="fa-solid fa-plus"></i></button></h3>
+            <ul>
+                {{#each abilities}}
+                <li data-item-id="{{id}}" class="class-ability">
+                    <button type="button" class="link" data-action="editItem">{{name}}</button>
+                    <small>{{localize "STN.Sheet.classAbility"}}</small>
+                </li>
+                {{/each}}
+                {{#each traits}}
+                <li data-item-id="{{id}}">
+                    <button type="button" class="link" data-action="editItem">{{name}}</button>
+                    <span class="actions"><button type="button" class="icon" data-action="deleteItem"><i class="fa-solid fa-trash"></i></button></span>
+                </li>
+                {{/each}}
+            </ul>
+        </section>
+    </div>
+
+    <section class="stn-gear">
+        <h3>{{localize "STN.Gear"}} <button type="button" class="icon" data-action="newItem" data-type="gear" title="{{localize 'STN.Sheet.add'}}"><i class="fa-solid fa-plus"></i></button></h3>
+        <ul>
+            <li class="unarmed">
+                <button type="button" class="roll" data-action="attack"><i class="fa-solid fa-hand-fist"></i> {{localize "STN.Attack.unarmed"}}</button>
+            </li>
+            {{#each gear}}
+            <li data-item-id="{{id}}">
+                {{#if weapon}}
+                <button type="button" class="roll" data-action="attack" data-item-id="{{id}}"><i class="fa-solid fa-burst"></i> {{name}}</button>
+                {{else}}
+                <button type="button" class="link" data-action="editItem">{{name}}</button>
+                {{/if}}
+                {{#if hasUses}}<span class="uses">{{system.uses.value}}/{{system.uses.max}}</span>{{/if}}
+                <span class="actions">
+                    <button type="button" class="icon" data-action="editItem"><i class="fa-solid fa-pen-to-square"></i></button>
+                    <button type="button" class="icon" data-action="deleteItem"><i class="fa-solid fa-trash"></i></button>
+                </span>
+            </li>
+            {{/each}}
+        </ul>
+    </section>
+
+    <section class="stn-notes">
+        <h3>{{localize "STN.Sheet.biography"}}</h3>
+        <textarea name="system.biography" rows="6" {{#unless editable}}disabled{{/unless}}>{{system.biography}}</textarea>
+    </section>
+</div>

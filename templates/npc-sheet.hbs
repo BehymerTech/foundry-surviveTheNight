@@ -1,0 +1,47 @@
+<div class="stn-sheet-body">
+    <header class="stn-head">
+        <img class="portrait" src="{{actor.img}}" data-edit="img" data-action="editImage" alt="{{actor.name}}">
+        <div class="identity">
+            <input class="name" type="text" name="name" value="{{actor.name}}" {{#unless editable}}disabled{{/unless}}>
+            <div class="sub"><span class="class">{{localize "STN.Npc.title"}}</span></div>
+        </div>
+        <div class="vitals">
+            <div class="vital life">
+                <span class="label">{{localize "STN.Life"}}</span>
+                <div class="bar"><i style="width: {{system.life.pct}}%"></i></div>
+                <div class="numbers">
+                    <button type="button" data-action="life" data-delta="-1">−</button>
+                    <input type="number" name="system.life.value" value="{{system.life.value}}" {{#unless editable}}disabled{{/unless}}>
+                    <span>/</span>
+                    <input type="number" name="system.life.max" value="{{system.life.max}}" {{#unless editable}}disabled{{/unless}}>
+                    <button type="button" data-action="life" data-delta="1">+</button>
+                </div>
+            </div>
+            <div class="vital dv">
+                <span class="label">{{localize "STN.DodgeValue"}}</span>
+                <input type="number" name="system.dv" value="{{system.dv}}" {{#unless editable}}disabled{{/unless}}>
+            </div>
+        </div>
+    </header>
+
+    <section class="stn-attack">
+        <h3>{{localize "STN.Npc.attack"}}</h3>
+        <div class="form-fields">
+            <input type="text" name="system.attack.label" value="{{system.attack.label}}" placeholder="{{localize 'STN.Npc.attackName'}}">
+            <label>{{localize "STN.Npc.hit"}} <input type="number" name="system.attack.hit" value="{{system.attack.hit}}"></label>
+            <label>{{localize "STN.Npc.damage"}} <input type="text" name="system.attack.damage" value="{{system.attack.damage}}"></label>
+            <button type="button" class="primary" data-action="attack"><i class="fa-solid fa-burst"></i> {{localize "STN.Attack.roll"}}</button>
+        </div>
+        <div class="form-fields">
+            <label>{{localize "STN.Npc.fearDifficulty"}} <input type="number" name="system.fearDifficulty" value="{{system.fearDifficulty}}"></label>
+            <button type="button" class="fear" data-action="fear"><i class="fa-solid fa-ghost"></i> {{localize "STN.Npc.callFear"}}</button>
+        </div>
+    </section>
+
+    <section class="stn-notes">
+        <h3>{{localize "STN.Npc.abilities"}}</h3>
+        <textarea name="system.abilities" rows="6" {{#unless editable}}disabled{{/unless}}>{{system.abilities}}</textarea>
+        <h3>{{localize "STN.Sheet.biography"}}</h3>
+        <textarea name="system.biography" rows="4" {{#unless editable}}disabled{{/unless}}>{{system.biography}}</textarea>
+    </section>
+</div>

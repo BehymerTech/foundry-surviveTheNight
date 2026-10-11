@@ -1,0 +1,89 @@
+<div class="stn-sheet-body">
+    <header class="stn-head">
+        <img class="portrait small" src="{{item.img}}" data-edit="img" data-action="editImage" alt="{{item.name}}">
+        <div class="identity">
+            <input class="name" type="text" name="name" value="{{item.name}}" {{#unless editable}}disabled{{/unless}}>
+            <div class="sub"><span class="class">{{localize (concat "TYPES.Item." type)}}</span></div>
+        </div>
+    </header>
+
+    {{#if isSkill}}
+    <fieldset>
+        <div class="form-group"><label>{{localize "STN.Item.stat"}}</label>
+            <div class="form-fields"><select name="system.stat">{{#each stats}}<option value="{{key}}" {{#if selected}}selected{{/if}}>{{label}}</option>{{/each}}</select></div></div>
+        <div class="form-group"><label>{{localize "STN.Item.tags"}}</label>
+            <div class="form-fields"><input type="text" name="system.tags" value="{{tags}}"></div>
+            <p class="hint">{{localize "STN.Item.tagsHint"}}</p></div>
+        <div class="form-group"><label>{{localize "STN.Item.mastered"}}</label>
+            <div class="form-fields"><input type="checkbox" name="system.mastered" {{checked system.mastered}}></div></div>
+        <div class="form-group"><label>{{localize "STN.Item.dv"}}</label>
+            <div class="form-fields"><input type="number" name="system.dv" value="{{system.dv}}"></div></div>
+        <h4>{{localize "STN.Item.weaponBonus"}}</h4>
+        <div class="form-group"><label>{{localize "STN.Item.weaponTags"}}</label>
+            <div class="form-fields"><input type="text" name="system.weaponBonus.tags" value="{{bonusTags}}"></div></div>
+        <div class="form-group"><label>{{localize "STN.Item.hit"}} / {{localize "STN.Item.damage"}} / {{localize "STN.Item.dice"}}</label>
+            <div class="form-fields">
+                <input type="number" name="system.weaponBonus.hit" value="{{system.weaponBonus.hit}}">
+                <input type="number" name="system.weaponBonus.damage" value="{{system.weaponBonus.damage}}">
+                <input type="number" name="system.weaponBonus.dice" value="{{system.weaponBonus.dice}}">
+            </div></div>
+    </fieldset>
+    {{/if}}
+
+    {{#if isTrait}}
+    <fieldset>
+        <div class="form-group"><label>{{localize "STN.Item.cost"}}</label>
+            <div class="form-fields"><input type="number" name="system.cost" value="{{system.cost}}"></div></div>
+        <div class="form-group"><label>{{localize "STN.Item.fatigueRemoved"}}</label>
+            <div class="form-fields"><input type="number" min="0" name="system.fatigueRemoved" value="{{system.fatigueRemoved}}"></div></div>
+        <div class="form-group"><label>{{localize "STN.Item.blocksFatigue"}}</label>
+            <div class="form-fields"><input type="checkbox" name="system.blocksFatigueRemoval" {{checked system.blocksFatigueRemoval}}></div></div>
+    </fieldset>
+    {{/if}}
+
+    {{#if isGear}}
+    <fieldset>
+        <div class="form-group"><label>{{localize "STN.Item.cost"}}</label>
+            <div class="form-fields"><input type="number" name="system.cost" value="{{system.cost}}"></div></div>
+        <div class="form-group"><label>{{localize "STN.Item.quantity"}}</label>
+            <div class="form-fields"><input type="number" min="0" name="system.quantity" value="{{system.quantity}}"></div></div>
+        <div class="form-group"><label>{{localize "STN.Item.uses"}}</label>
+            <div class="form-fields">
+                <input type="number" min="0" name="system.uses.value" value="{{system.uses.value}}"> /
+                <input type="number" min="0" name="system.uses.max" value="{{system.uses.max}}">
+            </div></div>
+        <div class="form-group"><label>{{localize "STN.Item.fatigueRemoved"}}</label>
+            <div class="form-fields"><input type="number" min="0" name="system.fatigueRemoved" value="{{system.fatigueRemoved}}"></div></div>
+        <h4>{{localize "STN.Item.weapon"}}</h4>
+        <div class="form-group"><label>{{localize "STN.Item.isWeapon"}}</label>
+            <div class="form-fields"><input type="checkbox" name="system.weapon.enabled" {{checked system.weapon.enabled}}></div></div>
+        <div class="form-group"><label>{{localize "STN.Item.dice"}}</label>
+            <div class="form-fields"><input type="number" min="0" name="system.weapon.dice" value="{{system.weapon.dice}}"> d6</div></div>
+        <div class="form-group"><label>{{localize "STN.Item.weaponTags"}}</label>
+            <div class="form-fields"><input type="text" name="system.weapon.tags" value="{{weaponTags}}"></div>
+            <p class="hint">{{localize "STN.Item.weaponTagsHint"}}</p></div>
+        <div class="form-group"><label>{{localize "STN.Item.unarmed"}}</label>
+            <div class="form-fields"><input type="checkbox" name="system.weapon.unarmed" {{checked system.weapon.unarmed}}></div></div>
+    </fieldset>
+    {{/if}}
+
+    {{#if (or isTrait isGear)}}
+    <fieldset class="stn-modifiers">
+        <legend>{{localize "STN.Item.modifiers"}}
+            <button type="button" class="icon" data-action="addModifier"><i class="fa-solid fa-plus"></i></button></legend>
+        <p class="hint">{{localize "STN.Item.modifiersHint"}}</p>
+        {{#each system.modifiers}}
+        <div class="form-fields">
+            <input type="text" name="system.modifiers.{{@index}}.target" value="{{target}}">
+            <input type="number" name="system.modifiers.{{@index}}.value" value="{{value}}">
+            <button type="button" class="icon" data-action="removeModifier" data-index="{{@index}}"><i class="fa-solid fa-xmark"></i></button>
+        </div>
+        {{/each}}
+    </fieldset>
+    {{/if}}
+
+    <section class="stn-notes">
+        <h3>{{localize "STN.Item.description"}}</h3>
+        <textarea name="system.description" rows="6" {{#unless editable}}disabled{{/unless}}>{{system.description}}</textarea>
+    </section>
+</div>

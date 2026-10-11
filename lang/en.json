@@ -1,0 +1,250 @@
+{
+  "TYPES": {
+    "Actor": {
+      "character": "Survivor",
+      "npc": "Monster / NPC"
+    },
+    "Item": {
+      "skill": "Skill",
+      "trait": "Trait",
+      "gear": "Gear"
+    }
+  },
+  "STN": {
+    "Life": "Life",
+    "DodgeValue": "Dodge Value",
+    "Fatigue": "Fatigue",
+    "FatiguePenalty": "Penalty",
+    "MeleeDamage": "Melee Damage",
+    "RangedDamage": "Ranged Damage",
+    "Grapple": "Grapple",
+    "Class": "Class",
+    "Skills": "Skills",
+    "Traits": "Traits",
+    "Gear": "Gear",
+    "Stat": {
+      "build": "Build",
+      "coordination": "Coordination",
+      "perception": "Perception",
+      "buildHint": "+5 Life per point; strength and melee damage",
+      "coordinationHint": "+1 Dodge Value per point; reflexes, ranged damage",
+      "perceptionHint": "Perception, Observation and intelligence rolls"
+    },
+    "Check": {
+      "perception": "Perception",
+      "observation": "Observation",
+      "intelligence": "Intelligence",
+      "strength": "Strength",
+      "reflex": "Reflex",
+      "fear": "Fear",
+      "panic": "Panic!"
+    },
+    "Panic": {
+      "gasp": { "name": "Gasp!", "text": "Makes a noise that can be heard nearby." },
+      "shout": { "name": "Shout!", "text": "Makes a noise that can be heard at a distance." },
+      "escape": { "name": "Escape! Scream!", "text": "Runs screaming in a direction of their choice." },
+      "flee": { "name": "Flee! Scream!", "text": "Runs screaming directly away from danger." },
+      "paralyzed": { "name": "Paralyzed!", "text": "Frozen in place from fear." },
+      "paralyzedScream": { "name": "Paralyzed! Scream!", "text": "Frozen in place from fear, and screaming." }
+    },
+    "Roll": {
+      "roll": "Roll",
+      "difficulty": "Difficulty",
+      "modifier": "Other modifier",
+      "addStat": "Add stat",
+      "noStat": "None",
+      "fearHint": "Fear rolls that fail trigger the Panic! table.",
+      "success": "Success against {dc}",
+      "fail": "Failure against {dc}",
+      "naturalOneFail": "Natural 1 always fails (difficulty {dc})",
+      "naturalOne": "Natural 1: this roll always fails.",
+      "rollPanic": "Failed? Roll Panic!",
+      "wingman": "(two dice, keep highest)",
+      "part": {
+        "stat": "Stat",
+        "skill": "Skill",
+        "traits": "Traits and gear",
+        "party": "Small party",
+        "fatigue": "Fatigue",
+        "extra": "Other",
+        "weaponSkill": "Weapon skill"
+      }
+    },
+    "Attack": {
+      "title": "Attack: {weapon}",
+      "unarmed": "Unarmed",
+      "damage": "Damage",
+      "hint": "Target a token first to use its Dodge Value automatically.",
+      "ifHit": "Applies if the attack hits.",
+      "roll": "Attack"
+    },
+    "Lucky": {
+      "title": "Lucky Break",
+      "text": "Reroll a difficulty or damage roll with +2. {left} Lucky Breaks left.",
+      "none": "No Lucky Breaks left."
+    },
+    "Sheet": {
+      "name": "Name",
+      "appearance": "Appearance",
+      "noClass": "No class",
+      "item": "Survive the Night Item Sheet",
+      "rolls": "Rolls",
+      "rollHint": "Shift-click a roll to skip the dialog. Natural 1s always fail.",
+      "friendNearby": "Wingman's friend is nearby",
+      "add": "Add",
+      "none": "None",
+      "mastery": "Training: Mastery (+3)",
+      "classAbility": "class",
+      "biography": "Notes and background",
+      "deleteTitle": "Delete {name}?",
+      "deleteText": "Remove {name} from this character?",
+      "new": {
+        "skill": "New Skill",
+        "trait": "New Trait",
+        "gear": "New Gear"
+      }
+    },
+    "Npc": {
+      "title": "Monster / NPC",
+      "attack": "Attack",
+      "attackName": "Attack name",
+      "hit": "To hit",
+      "damage": "Damage",
+      "fearDifficulty": "Fear difficulty",
+      "callFear": "Call Fear roll",
+      "fearCall": "Fear roll!",
+      "fearText": "{name} calls for a Fear roll against difficulty {dc}.",
+      "abilities": "Abilities and notes"
+    },
+    "Item": {
+      "stat": "Default stat",
+      "tags": "Roll tags",
+      "tagsHint": "Comma separated. Trait modifiers apply to rolls carrying matching tags, e.g. athletic, knowledge.",
+      "mastered": "Training: Mastery",
+      "dv": "Dodge Value bonus",
+      "weaponBonus": "Weapon bonus",
+      "weaponTags": "Weapon tags",
+      "weaponTagsHint": "e.g. melee, ranged, firearm, unarmed, thrown, sport, hunting, armed",
+      "hit": "To hit",
+      "damage": "Damage",
+      "dice": "Dice",
+      "cost": "Character point cost",
+      "quantity": "Quantity",
+      "uses": "Uses",
+      "fatigueRemoved": "Fatigue penalties removed",
+      "blocksFatigue": "Blocks Fatigue removal",
+      "weapon": "Weapon",
+      "isWeapon": "Is a weapon",
+      "unarmed": "Counts as unarmed",
+      "modifiers": "Modifiers",
+      "modifiersHint": "Target is a roll tag (fear, panic, strength, coordination, perception, athletic, skill:run ...) or a derived value (life, dv, damage:melee, damage:ranged).",
+      "description": "Description"
+    },
+    "Settings": {
+      "partySize": {
+        "name": "Party size",
+        "hint": "Fear rolls suffer -1 in a party of fewer than four survivors and -2 when alone."
+      },
+      "createButton": "Create Survivor"
+    },
+    "Creator": {
+      "title": "Survivor Creator",
+      "points": "Character Points",
+      "next": "Next",
+      "back": "Back",
+      "reset": "Start over",
+      "create": "Create Survivor",
+      "add": "Add",
+      "remove": "Remove",
+      "name": "Name",
+      "created": "{name} has been created.",
+      "fixErrors": "Fix the problems listed first.",
+      "noPermission": "You do not have permission to create actors.",
+      "step": {
+        "class": "Class",
+        "stats": "Stats",
+        "skills": "Skills",
+        "traits": "Traits",
+        "gear": "Gear",
+        "review": "Review"
+      },
+      "chooseClass": "Choose a class",
+      "chooseClassHint": "Your class grants free abilities and decides which skills you can learn. Team up with the other players for a varied group.",
+      "classSkills": "Class skills",
+      "noClassSkills": "None (Team Players take extra common skills)",
+      "chooseAbility": "Choose one class ability",
+      "samples": "Or start from a sample character",
+      "samplesHint": "These are the twelve characters from the Player's Guide. You can change anything before creating them.",
+      "stats": "Stats",
+      "statsHint": "Each +1 costs 2 character points; each -1 gives 2 back. No stat may go above +{limit} or below -{limit}.",
+      "freeFromClass": "{n} free from class",
+      "statText": {
+        "build": "Size and strength. +5 Life per bonus (-3 per penalty). Strength rolls, melee damage and grappling.",
+        "coordination": "Dexterity and agility. +1 Dodge Value per bonus. Reflex rolls and ranged damage.",
+        "perception": "Mental acuity. Perception, Observation and intelligence rolls."
+      },
+      "skills": "Skills",
+      "skillsHint": "Each skill costs 1 point and gives +2 to related rolls. Take up to three from your class list and up to two from the common list (Team Players take four common skills).",
+      "classSlots": "Class skills",
+      "commonSlots": "Common skills",
+      "freeSkills": "Free skills",
+      "freePicks": "Choose {n} class skills for free",
+      "classSkillList": "Class skills",
+      "commonSkillList": "Common skills",
+      "masteryTarget": "Training: Mastery applies to",
+      "lucky": "Lucky Breaks",
+      "luckyHint": "Trade Lucky Breaks for free skills or gear before play. Unspent breaks stay as rerolls with +2.",
+      "luckySkill": "Trade for a skill...",
+      "luckyGear": "Trade for gear...",
+      "traits": "Traits",
+      "traitsHint": "Traits cost 1 or 2 points. Negative traits give points back. Over-prepared and Well-rounded can be taken more than once.",
+      "customTrait": "Invent a trait",
+      "customTraitHint": "Agree the cost with your Narrator. Effects are applied by hand.",
+      "customTraitName": "Trait name",
+      "customTraitNote": "What it does",
+      "customTraitMissing": "Give the trait a name and a cost.",
+      "gear": "Gear",
+      "gearHint": "Take up to two items; each costs 1 point (the pistol costs 2). Over-prepared adds a slot.",
+      "gearSlots": "Gear slots",
+      "customGear": "Other items",
+      "customGearName": "Item name (agree with your Narrator)",
+      "review": "Review your survivor",
+      "abilities": "Class abilities",
+      "traitGroup": {
+        "one": "1 point",
+        "two": "2 points",
+        "negative": "Negative (points back)"
+      },
+      "gearGroup": {
+        "utility": "Utility",
+        "weapon": "Weapons",
+        "misc": "Miscellaneous",
+        "class": "Class gear"
+      }
+    },
+    "CreatorError": {
+      "noClass": "Choose a class to begin.",
+      "noAbility": "Choose one of the class abilities.",
+      "statLimit": "{stat} cannot be above +{limit} or below -{limit}.",
+      "unknownTrait": "Unknown trait {key}.",
+      "traitStack": "{name} cannot be taken more than once.",
+      "traitOverlap": "{name} does not stack with {other}.",
+      "freePickNotInClass": "{name} is not on your class skill list.",
+      "freePicksLeft": "Choose {count} more free class skill(s).",
+      "duplicateSkill": "You already have {name}.",
+      "unknownSkill": "Unknown skill {key}.",
+      "tooManyClassSkills": "Too many class skills ({name}).",
+      "skillNotAllowed": "{name} is not available to your class.",
+      "tooManyCommonSkills": "Too many common skills: {used} of {allowed} allowed.",
+      "masteryTarget": "Training: Mastery needs a skill you already have.",
+      "unknownGear": "Unknown gear {key}.",
+      "gearNotAllowed": "{name} is not available to your class.",
+      "tooMuchGear": "Too much gear: {used} items but only {allowed} slots.",
+      "tooManyLuckyTrades": "You can trade at most {allowed} Lucky Breaks.",
+      "overBudget": "You are {over} character point(s) over budget."
+    },
+    "CreatorWarning": {
+      "unspentPoints": "You still have {remaining} unspent character point(s)."
+    }
+  }
+}
