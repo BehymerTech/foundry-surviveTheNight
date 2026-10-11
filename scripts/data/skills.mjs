@@ -97,8 +97,7 @@ export const SKILLS = [
         note: "+2 to hit and two additional damage dice with guns.",
     }),
     skill("melee-weaponry", "Melee Weaponry", {
-        weapon: { tags: ["armed"], hit: 2, damage: 2, dice: 0 },
-        note: "The guide does not give numbers; treated as +2 to hit and damage with armed melee weapons.",
+        note: "The guide gives no numbers, so this adds no flat bonus; damage comes from the weapon and Build.",
     }),
     skill("barricading", "Barricading", { stat: "build", tags: ["barricade"] }),
     skill("hunting-implements", "Hunting Implements", {

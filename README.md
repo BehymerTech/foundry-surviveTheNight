@@ -55,7 +55,7 @@ Item sheets expose these, so Narrators can invent traits and gear the way the gu
 
 The guide leaves a few things open; the system chooses:
 
-- *Melee Weaponry* has no numbers in the guide. It gives +2 to hit and damage with armed melee weapons.
+- *Melee Weaponry* has no numbers in the guide. It adds no flat bonus; melee damage comes from the weapon and Build.
 - Narrator-judged things (what difficulty to set, whether a skill applies, which skills count as mental) stay manual. Stat selection on skill rolls defaults to a sensible stat and can be changed in the roll dialog.
 - Rally, Devoted, injuries and death are left to the table.
 
